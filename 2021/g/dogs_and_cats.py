@@ -58,16 +58,12 @@ def parse_input() -> list[bool]:
 
 
 def generate_output(result_data: list[bool]) -> str:
-    output = ""
     leading_string = "Case #"
 
-    for count, case in enumerate(result_data):
-        if case == True:
-            output += f"{leading_string}{count + 1}: YES\n"
-        else:
-            output += f"{leading_string}{count + 1}: NO\n"
-
-    return output
+    return "".join(
+        f"{leading_string}{count + 1}: {'YES' if case else 'NO'}\n"
+        for count, case in enumerate(result_data)
+    )
 
 
 def main() -> None:
