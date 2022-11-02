@@ -43,11 +43,11 @@ def parse_input() -> list[bool]:
         if parsed_numbers and order_string:
             result_data.append(
                 calculate(
-                    parsed_numbers[0],
-                    parsed_numbers[1],
-                    parsed_numbers[2],
-                    parsed_numbers[3],
-                    order_string,
+                    total_animals=parsed_numbers[0],
+                    dog_portions=parsed_numbers[1],
+                    cat_portions=parsed_numbers[2],
+                    extra_cat_portions=parsed_numbers[3],
+                    order=order_string,
                 )
             )
 
@@ -63,7 +63,7 @@ def generate_output(result_data: list[bool]) -> str:
 
     for count, case in enumerate(result_data):
         if case == True:
-            output += f"{leading_string}{+ count + 1}: YES\n"
+            output += f"{leading_string}{count + 1}: YES\n"
         else:
             output += f"{leading_string}{count + 1}: NO\n"
 
