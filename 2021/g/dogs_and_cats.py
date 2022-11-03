@@ -10,6 +10,8 @@ def calculate(
 
     order_list = list(order)
 
+    # Copy order_list as it is modified during iteration and the orginal list is used
+    # to keep track of animals left
     for animal in order_list.copy():
         if animal == "D" and not dog_portions:
             return False
@@ -35,6 +37,8 @@ def parse_input() -> list[bool]:
     while len(result_data) != case_number:
         console_input = input()
 
+        # Not the best form of validation, but this assumes the test cases are inputted
+        # correctly into the terminal
         if "D" in console_input or "C" in console_input:
             order_string = console_input
         else:
@@ -58,10 +62,9 @@ def parse_input() -> list[bool]:
 
 
 def generate_output(result_data: list[bool]) -> str:
-    leading_string = "Case #"
-
     return "\n".join(
-        f"{leading_string}{count + 1}: {'YES' if case else 'NO'}"
+        # Add 1 to count because Python starts from 0
+        f"Case #{count + 1}: {'YES' if case else 'NO'}"
         for count, case in enumerate(result_data)
     )
 
